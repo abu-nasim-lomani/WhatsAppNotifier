@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WhatsAppNotifier")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2c45984ace0657aaff6f8c7979b4f9ca21ef3c90")]
 [assembly: System.Reflection.AssemblyProductAttribute("WhatsAppNotifier")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WhatsAppNotifier")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

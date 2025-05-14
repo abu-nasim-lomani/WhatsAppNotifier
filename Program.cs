@@ -31,7 +31,7 @@ builder.Services.AddHangfire(configuration => configuration
 
 builder.Services.AddHangfireServer();
 
-// Register the WhatsApp service
+// Register services
 builder.Services.AddSingleton<WhatsAppService>();
 builder.Services.AddSingleton<BackgroundMessagingService>();
 
@@ -58,11 +58,20 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-// Set up recurring job
+// Set up fixed recurring job - every 1 minute
 using (var scope = app.Services.CreateScope())
 {
     var backgroundService = scope.ServiceProvider.GetRequiredService<BackgroundMessagingService>();
-    backgroundService.ScheduleRecurringJob();
+
+    // Remove any existing jobs first
+    RecurringJob.RemoveIfExists("send-sales-report");
+
+    // Schedule the job to run every 1 minute
+    RecurringJob.AddOrUpdate(
+        "send-sales-report",
+        () => backgroundService.SendSalesReportJob(),
+        "*/1 * * * *", // Cron expression for every 1 minute
+        TimeZoneInfo.Local);
 }
 
 app.Run();

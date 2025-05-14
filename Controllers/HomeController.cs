@@ -1,8 +1,10 @@
+using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using WhatsAppNotifier.Models;
 using WhatsAppNotifier.Services;
-using Microsoft.Extensions.Logging;
 
 namespace WhatsAppNotifier.Controllers
 {
@@ -19,16 +21,60 @@ namespace WhatsAppNotifier.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.PhoneNumberId = _whatsAppService.GetPhoneNumberId();
+            ViewBag.BusinessAccountId = _whatsAppService.GetBusinessAccountId();
             var messageHistory = _whatsAppService.GetMessageHistory();
             return View(messageHistory);
         }
 
         [HttpPost]
-        public async Task<IActionResult> SendTestMessage()
+        public async Task<IActionResult> SendSalesReport()
         {
-            _logger.LogInformation("Manual test message requested");
-            var results = await _whatsAppService.SendWhatsAppMessages();
-            _logger.LogInformation($"Sent {results.Count} test messages");
+            _logger.LogInformation("Manual sales report requested");
+            var results = await _whatsAppService.SendStaticSalesReport();
+            _logger.LogInformation($"Sent {results.Count} sales reports");
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult UpdateAccessToken(string accessToken)
+        {
+            if (string.IsNullOrEmpty(accessToken))
+            {
+                TempData["Error"] = "Access token cannot be empty";
+                return RedirectToAction("Index");
+            }
+
+            _whatsAppService.UpdateAccessToken(accessToken);
+            TempData["Success"] = "Access token updated successfully";
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult UpdatePhoneNumberId(string phoneNumberId)
+        {
+            if (string.IsNullOrEmpty(phoneNumberId))
+            {
+                TempData["Error"] = "Phone Number ID cannot be empty";
+                return RedirectToAction("Index");
+            }
+
+            _whatsAppService.UpdatePhoneNumberId(phoneNumberId);
+            TempData["Success"] = "Phone Number ID updated successfully";
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult UpdateBusinessAccountId(string businessAccountId)
+        {
+            if (string.IsNullOrEmpty(businessAccountId))
+            {
+                TempData["Error"] = "WhatsApp Business Account ID cannot be empty";
+                return RedirectToAction("Index");
+            }
+
+            _whatsAppService.UpdateBusinessAccountId(businessAccountId);
+            TempData["Success"] = "WhatsApp Business Account ID updated successfully";
             return RedirectToAction("Index");
         }
 

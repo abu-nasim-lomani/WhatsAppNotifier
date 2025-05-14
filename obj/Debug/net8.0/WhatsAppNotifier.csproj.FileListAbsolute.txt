@@ -80,6 +80,7 @@ D:\Nasim\WhatsAppNotifier\obj\Debug\net8.0\WhatsAppNotifier.csproj.CoreCompileIn
 D:\Nasim\WhatsAppNotifier\obj\Debug\net8.0\WhatsAppNotifier.MvcApplicationPartsAssemblyInfo.cache
 D:\Nasim\WhatsAppNotifier\obj\Debug\net8.0\WhatsAppNotifier.RazorAssemblyInfo.cache
 D:\Nasim\WhatsAppNotifier\obj\Debug\net8.0\WhatsAppNotifier.RazorAssemblyInfo.cs
+D:\Nasim\WhatsAppNotifier\obj\Debug\net8.0\WhatsAppNotifier.sourcelink.json
 D:\Nasim\WhatsAppNotifier\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\Nasim\WhatsAppNotifier\obj\Debug\net8.0\scopedcss\bundle\WhatsAppNotifier.styles.css
 D:\Nasim\WhatsAppNotifier\obj\Debug\net8.0\scopedcss\projectbundle\WhatsAppNotifier.bundle.scp.css

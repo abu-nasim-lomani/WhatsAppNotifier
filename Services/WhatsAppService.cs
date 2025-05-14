@@ -14,8 +14,9 @@ namespace WhatsAppNotifier.Services
     {
         private readonly IConfiguration _configuration;
         private readonly ILogger<WhatsAppService> _logger;
-        private readonly string _accessToken;
-        private readonly string _phoneNumberId;
+        private string _accessToken;
+        private string _phoneNumberId;
+        private string _businessAccountId;
         private readonly List<string> _recipientNumbers;
         private static readonly List<WhatsAppMessageModel> _messageHistory = new List<WhatsAppMessageModel>();
 
@@ -25,6 +26,7 @@ namespace WhatsAppNotifier.Services
             _logger = logger;
             _accessToken = _configuration["WhatsApp:AccessToken"];
             _phoneNumberId = _configuration["WhatsApp:PhoneNumberId"];
+            _businessAccountId = _configuration["WhatsApp:WhatsAppBusinessAccountId"];
 
             // Get recipient numbers from configuration
             _recipientNumbers = _configuration.GetSection("WhatsApp:RecipientNumbers").Get<List<string>>();
@@ -41,23 +43,76 @@ namespace WhatsAppNotifier.Services
             }
 
             _logger.LogInformation($"Initialized WhatsAppService with {_recipientNumbers.Count} recipients");
+            _logger.LogInformation($"Using Phone Number ID: {_phoneNumberId}");
+            _logger.LogInformation($"Using Business Account ID: {_businessAccountId}");
         }
 
-        public async Task<List<WhatsAppMessageModel>> SendWhatsAppMessages()
+        public async Task<List<WhatsAppMessageModel>> SendDailySalesReport(
+            string date = null,
+            decimal totalSales = 0,
+            int totalCustomers = 0,
+            int newCustomers = 0,
+            int grandTotalCustomers = 0,
+            int totalVisited = 0,
+            int visitedNoPurchase = 0,
+            int newCustomersNoPurchase = 0)
         {
-            var results = new List<WhatsAppMessageModel>();
-            string messageText = $"Test message sent at {DateTime.Now:yyyy-MM-dd HH:mm:ss}";
+            // If no date provided, use current date
+            if (string.IsNullOrEmpty(date))
+            {
+                date = DateTime.Now.ToString("dd MMM yyyy");
+            }
 
+            // Format the sales report message
+            string messageText =
+                $"🗓 Daily Sales and Customer Report\n" +
+                $"Date: {date}\n" +
+                $"Total Sales: {totalSales:N2} BDT\n" +
+                $"👥 Customer Summary\n" +
+                $"Total Customers: {totalCustomers}\n" +
+                $"New Customers: {newCustomers}\n" +
+                $"Grand Total Customers (Cumulative): {grandTotalCustomers}\n" +
+                $"🧴 Treatment Activity\n" +
+                $"Total Visited for Treatment: {totalVisited}\n" +
+                $"Visited for Treatment but Did Not Purchase: {visitedNoPurchase}\n" +
+                $"New Customers Consulted but Did Not Purchase: {newCustomersNoPurchase}";
+
+            var results = new List<WhatsAppMessageModel>();
+
+            // Send the message to all recipients
             foreach (var recipientNumber in _recipientNumbers)
             {
-                var message = await SendSingleWhatsAppMessage(recipientNumber, messageText);
+                var message = await SendTextMessage(recipientNumber, messageText);
                 results.Add(message);
             }
 
             return results;
         }
 
-        private async Task<WhatsAppMessageModel> SendSingleWhatsAppMessage(string recipientNumber, string messageText)
+        public async Task<List<WhatsAppMessageModel>> SendStaticSalesReport()
+        {
+            // Static sample data as per your example
+            string date = DateTime.Now.ToString("dd MMM yyyy");
+            decimal totalSales = 1402127.52M;
+            int totalCustomers = 358;
+            int newCustomers = 113;
+            int grandTotalCustomers = 510;
+            int totalVisited = 309;
+            int visitedNoPurchase = 169;
+            int newCustomersNoPurchase = 36;
+
+            return await SendDailySalesReport(
+                date,
+                totalSales,
+                totalCustomers,
+                newCustomers,
+                grandTotalCustomers,
+                totalVisited,
+                visitedNoPurchase,
+                newCustomersNoPurchase);
+        }
+
+        public async Task<WhatsAppMessageModel> SendTextMessage(string recipientNumber, string messageText)
         {
             var message = new WhatsAppMessageModel
             {
@@ -73,23 +128,6 @@ namespace WhatsAppNotifier.Services
             request.AddHeader("Authorization", $"Bearer {_accessToken}");
             request.AddHeader("Content-Type", "application/json");
 
-            // Use template message for better deliverability
-            var body = new
-            {
-                messaging_product = "whatsapp",
-                recipient_type = "individual",
-                to = recipientNumber,
-                type = "template",
-                template = new
-                {
-                    name = "hello_world",
-                    language = new { code = "en_US" }
-                }
-            };
-
-            // Uncomment below and comment the template above if you want to use free-form text
-            // (Only works if within 24-hour window)
-            /*
             var body = new
             {
                 messaging_product = "whatsapp",
@@ -98,7 +136,6 @@ namespace WhatsAppNotifier.Services
                 type = "text",
                 text = new { preview_url = false, body = messageText }
             };
-            */
 
             request.AddJsonBody(JsonConvert.SerializeObject(body));
 
@@ -138,48 +175,30 @@ namespace WhatsAppNotifier.Services
             return message;
         }
 
-        public async Task<WhatsAppMessageModel> SendWhatsAppMessageWithRetry(int maxRetries = 3)
+        public void UpdateAccessToken(string newToken)
         {
-            List<WhatsAppMessageModel> messages = null;
-            int attempts = 0;
-            bool allSuccess = false;
-
-            while (!allSuccess && attempts < maxRetries)
-            {
-                attempts++;
-                messages = await SendWhatsAppMessages();
-                allSuccess = messages.All(m => m.IsSent);
-
-                if (!allSuccess && attempts < maxRetries)
-                {
-                    // Wait before retrying (exponential backoff)
-                    await Task.Delay(TimeSpan.FromSeconds(Math.Pow(2, attempts)));
-                }
-            }
-
-            // Return the first message for backward compatibility
-            // (the calling code expects a single message)
-            return messages?.FirstOrDefault();
+            _accessToken = newToken;
+            _logger.LogInformation("Access token updated in-memory");
         }
 
-        public void UpdateMessageStatus(string messageId, string status)
+        public void UpdatePhoneNumberId(string newPhoneNumberId)
         {
-            var message = _messageHistory.FirstOrDefault(m => m.Id == messageId);
-            if (message != null)
-            {
-                message.Status = status;
-                if (status == "delivered")
-                {
-                    message.IsDelivered = true;
-                    message.DeliveredTime = DateTime.Now;
-                }
-                _logger.LogInformation($"Updated message {messageId} status to {status}");
-            }
+            _phoneNumberId = newPhoneNumberId;
+            _logger.LogInformation($"Phone Number ID updated in-memory to: {newPhoneNumberId}");
+        }
+
+        public void UpdateBusinessAccountId(string newBusinessAccountId)
+        {
+            _businessAccountId = newBusinessAccountId;
+            _logger.LogInformation($"WhatsApp Business Account ID updated in-memory to: {newBusinessAccountId}");
         }
 
         public List<WhatsAppMessageModel> GetMessageHistory()
         {
             return _messageHistory.OrderByDescending(m => m.SentTime).ToList();
         }
+
+        public string GetPhoneNumberId() => _phoneNumberId;
+        public string GetBusinessAccountId() => _businessAccountId;
     }
 }

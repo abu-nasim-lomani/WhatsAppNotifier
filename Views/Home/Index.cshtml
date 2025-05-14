@@ -1,19 +1,95 @@
 ﻿@model List<WhatsAppNotifier.Models.WhatsAppMessageModel>
 @{
     ViewData["Title"] = "WhatsApp Notifier";
+    string phoneNumberId = ViewBag.PhoneNumberId ?? "";
+    string businessAccountId = ViewBag.BusinessAccountId ?? "";
 }
 
 <div class="text-center">
     <h1 class="display-4">WhatsApp Notifier</h1>
-    <p>Automatic WhatsApp messages are being sent every 30 seconds.</p>
-
-    <form asp-action="SendTestMessage" method="post">
-        <button type="submit" class="btn btn-primary mb-4">Send Test Message Now</button>
-    </form>
+    
+    <div class="alert alert-info">
+        <strong>Schedule Status:</strong> Reports are automatically sent every 1 minute
+    </div>
 </div>
 
 <div class="container mt-4">
-    <h2>Message Status</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">WhatsApp API Configuration</div>
+                <div class="card-body">
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger">@TempData["Error"]</div>
+                    }
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert alert-success">@TempData["Success"]</div>
+                    }
+                    
+                    <!-- Access Token Form -->
+                    <form asp-action="UpdateAccessToken" method="post" class="mb-4">
+                        <div class="mb-3">
+                            <label for="accessToken" class="form-label">Access Token</label>
+                            <input type="text" class="form-control" id="accessToken" name="accessToken" required>
+                            <div class="form-text">Paste the new access token from Meta Developer Portal</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Access Token</button>
+                    </form>
+                    
+                    <hr>
+                    
+                    <!-- Phone Number ID Form -->
+                    <form asp-action="UpdatePhoneNumberId" method="post" class="mb-4">
+                        <div class="mb-3">
+                            <label for="phoneNumberId" class="form-label">Phone Number ID</label>
+                            <input type="text" class="form-control" id="phoneNumberId" name="phoneNumberId" value="@phoneNumberId" required>
+                            <div class="form-text">Current Phone Number ID: @phoneNumberId</div>
+                        </div>
+                        <button type="submit" class="btn btn-info">Update Phone Number ID</button>
+                    </form>
+                    
+                    <hr>
+                    
+                    <!-- Business Account ID Form -->
+                    <form asp-action="UpdateBusinessAccountId" method="post">
+                        <div class="mb-3">
+                            <label for="businessAccountId" class="form-label">WhatsApp Business Account ID</label>
+                            <input type="text" class="form-control" id="businessAccountId" name="businessAccountId" value="@businessAccountId" required>
+                            <div class="form-text">Current Business Account ID: @businessAccountId</div>
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Update Business Account ID</button>
+                    </form>
+                </div>
+            </div>
+            
+            <form asp-action="SendSalesReport" method="post">
+                <button type="submit" class="btn btn-success w-100 mb-4">Send Report Now</button>
+            </form>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Message Preview</div>
+                <div class="card-body">
+                    <pre style="white-space: pre-wrap; font-size: 0.9rem;">🗓 Daily Sales and Customer Report
+Date: @DateTime.Now.ToString("dd MMM yyyy")
+Total Sales:  1402127.52 BDT
+👥 Customer Summary
+Total Customers : 358
+New Customers: 113
+Grand Total Customers (Cumulative): 510
+🧴 Treatment Activity
+Total Visited for Treatment : 309
+Visited for Treatment but Did Not Purchase: 169
+New Customers Consulted but Did Not Purchase: 36</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h2 class="mt-4">Message History</h2>
     <div class="row">
         <div class="col-12">
             @if (Model.Any(m => !m.IsSent || !m.IsDelivered))
@@ -24,13 +100,12 @@
             }
         </div>
     </div>
-
+    
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>Time Sent</th>
                 <th>Recipient</th>
-                <th>Message</th>
                 <th>Status</th>
                 <th>Time Delivered</th>
                 <th>Error</th>
@@ -42,7 +117,6 @@
                 <tr>
                     <td>@message.SentTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
                     <td>@message.RecipientNumber</td>
-                    <td>@message.Message</td>
                     <td>
                         @if (message.Status == "delivered")
                         {
