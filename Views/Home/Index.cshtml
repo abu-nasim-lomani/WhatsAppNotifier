@@ -1,0 +1,70 @@
+﻿@model List<WhatsAppNotifier.Models.WhatsAppMessageModel>
+@{
+    ViewData["Title"] = "WhatsApp Notifier";
+}
+
+<div class="text-center">
+    <h1 class="display-4">WhatsApp Notifier</h1>
+    <p>Automatic WhatsApp messages are being sent every 30 seconds.</p>
+
+    <form asp-action="SendTestMessage" method="post">
+        <button type="submit" class="btn btn-primary mb-4">Send Test Message Now</button>
+    </form>
+</div>
+
+<div class="container mt-4">
+    <h2>Message Status</h2>
+    <div class="row">
+        <div class="col-12">
+            @if (Model.Any(m => !m.IsSent || !m.IsDelivered))
+            {
+                <div class="alert alert-warning">
+                    <strong>Warning!</strong> Some messages have not been sent or delivered successfully.
+                </div>
+            }
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Time Sent</th>
+                <th>Recipient</th>
+                <th>Message</th>
+                <th>Status</th>
+                <th>Time Delivered</th>
+                <th>Error</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var message in Model)
+            {
+                <tr>
+                    <td>@message.SentTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    <td>@message.RecipientNumber</td>
+                    <td>@message.Message</td>
+                    <td>
+                        @if (message.Status == "delivered")
+                        {
+                            <span class="badge bg-success">Delivered</span>
+                        }
+                        else if (message.Status == "sent")
+                        {
+                            <span class="badge bg-primary">Sent</span>
+                        }
+                        else if (message.Status == "failed" || message.Status == "error")
+                        {
+                            <span class="badge bg-danger">Failed</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning">@message.Status</span>
+                        }
+                    </td>
+                    <td>@(message.DeliveredTime.HasValue ? message.DeliveredTime.Value.ToString("yyyy-MM-dd HH:mm:ss") : "-")</td>
+                    <td>@(string.IsNullOrEmpty(message.Error) ? "-" : message.Error)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

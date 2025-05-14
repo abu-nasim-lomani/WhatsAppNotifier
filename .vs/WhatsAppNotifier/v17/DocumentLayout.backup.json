@@ -1,0 +1,202 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Nasim\\WhatsAppNotifier\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|d:\\nasim\\whatsappnotifier\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|d:\\nasim\\whatsappnotifier\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|d:\\nasim\\whatsappnotifier\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|d:\\nasim\\whatsappnotifier\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|d:\\nasim\\whatsappnotifier\\services\\backgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|solutionrelative:services\\backgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|d:\\nasim\\whatsappnotifier\\services\\whatsappservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|solutionrelative:services\\whatsappservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|d:\\nasim\\whatsappnotifier\\controllers\\webhookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|solutionrelative:controllers\\webhookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|d:\\nasim\\whatsappnotifier\\models\\messagestatusmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|solutionrelative:models\\messagestatusmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|d:\\nasim\\whatsappnotifier\\whatsappnotifier.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|solutionrelative:whatsappnotifier.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|d:\\nasim\\whatsappnotifier\\models\\whatsappmessagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E3482CE-CB04-4DB5-B776-2BAF8C02B0F3}|WhatsAppNotifier.csproj|solutionrelative:models\\whatsappmessagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BackgroundService.cs",
+              "DocumentMoniker": "D:\\Nasim\\WhatsAppNotifier\\Services\\BackgroundService.cs",
+              "RelativeDocumentMoniker": "Services\\BackgroundService.cs",
+              "ToolTip": "D:\\Nasim\\WhatsAppNotifier\\Services\\BackgroundService.cs",
+              "RelativeToolTip": "Services\\BackgroundService.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAgwCUAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T08:22:13.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Nasim\\WhatsAppNotifier\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\Nasim\\WhatsAppNotifier\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAqwA8AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-14T08:20:45.194Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Nasim\\WhatsAppNotifier\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Nasim\\WhatsAppNotifier\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAkwC0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T08:22:25.204Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "WhatsAppService.cs",
+              "DocumentMoniker": "D:\\Nasim\\WhatsAppNotifier\\Services\\WhatsAppService.cs",
+              "RelativeDocumentMoniker": "Services\\WhatsAppService.cs",
+              "ToolTip": "D:\\Nasim\\WhatsAppNotifier\\Services\\WhatsAppService.cs",
+              "RelativeToolTip": "Services\\WhatsAppService.cs",
+              "ViewState": "AgIAAKMAAAAAAAAAAAAYwLgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T08:21:56.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Nasim\\WhatsAppNotifier\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Nasim\\WhatsAppNotifier\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAADAAAAAAAAAAAAAYwEUAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-14T08:22:58.013Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nasim\\WhatsAppNotifier\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Nasim\\WhatsAppNotifier\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAQwEMAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T08:23:05.308Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MessageStatusModel.cs",
+              "DocumentMoniker": "D:\\Nasim\\WhatsAppNotifier\\Models\\MessageStatusModel.cs",
+              "RelativeDocumentMoniker": "Models\\MessageStatusModel.cs",
+              "ToolTip": "D:\\Nasim\\WhatsAppNotifier\\Models\\MessageStatusModel.cs",
+              "RelativeToolTip": "Models\\MessageStatusModel.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAA6wCoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T08:21:17.584Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "WebhookController.cs",
+              "DocumentMoniker": "D:\\Nasim\\WhatsAppNotifier\\Controllers\\WebhookController.cs",
+              "RelativeDocumentMoniker": "Controllers\\WebhookController.cs",
+              "ToolTip": "D:\\Nasim\\WhatsAppNotifier\\Controllers\\WebhookController.cs",
+              "RelativeToolTip": "Controllers\\WebhookController.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAQwDkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T08:22:38.141Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "WhatsAppNotifier",
+              "DocumentMoniker": "D:\\Nasim\\WhatsAppNotifier\\WhatsAppNotifier.csproj",
+              "RelativeDocumentMoniker": "WhatsAppNotifier.csproj",
+              "ToolTip": "D:\\Nasim\\WhatsAppNotifier\\WhatsAppNotifier.csproj",
+              "RelativeToolTip": "WhatsAppNotifier.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-14T08:21:31.249Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "WhatsAppMessageModel.cs",
+              "DocumentMoniker": "D:\\Nasim\\WhatsAppNotifier\\Models\\WhatsAppMessageModel.cs",
+              "RelativeDocumentMoniker": "Models\\WhatsAppMessageModel.cs",
+              "ToolTip": "D:\\Nasim\\WhatsAppNotifier\\Models\\WhatsAppMessageModel.cs",
+              "RelativeToolTip": "Models\\WhatsAppMessageModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAIwBAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T08:21:00.277Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
